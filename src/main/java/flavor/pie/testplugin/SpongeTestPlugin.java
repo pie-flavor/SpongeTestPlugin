@@ -17,6 +17,7 @@ import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.state.GameInitializationEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.text.Text;
+import org.spongepowered.api.text.serializer.TextSerializers;
 
 import javax.inject.Inject;
 import java.io.BufferedWriter;
@@ -80,15 +81,15 @@ public class SpongeTestPlugin {
                 .build();
         CommandSpec textSimple = CommandSpec.builder()
                 .executor(textTest)
-                .arguments(GenericArguments.text(Text.of("text"), false, true))
+                .arguments(GenericArguments.text(Text.of("text"), TextSerializers.FORMATTING_CODE, true))
                 .build();
         CommandSpec textComplex = CommandSpec.builder()
                 .executor(textTest)
-                .arguments(GenericArguments.text(Text.of("text"), true, true))
+                .arguments(GenericArguments.text(Text.of("text"), TextSerializers.JSON, true))
                 .build();
         CommandSpec textSingle = CommandSpec.builder()
                 .executor(textTest)
-                .arguments(GenericArguments.text(Text.of("text"), false, false))
+                .arguments(GenericArguments.text(Text.of("text"), TextSerializers.FORMATTING_CODE, false))
                 .build();
         CommandSpec dateTime = CommandSpec.builder()
                 .executor(dateTimeTest)
